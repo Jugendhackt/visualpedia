@@ -1,12 +1,24 @@
 
-function getBasicInformation(page){
-    $.ajax({
-        url: 'https://de.wikipedia.org/w/api.php',
-        data: { action: 'query', list: 'search', srsearch: $("input[name=Wikipedia]").val(), format: 'json' },
+function getSummary(page,callback){
+    var summary;
+    var wikiURL = "https://de.wikipedia.org/w/api.php";
+    wikiURL += '?' + $.param({
+        'action' : 'query',
+        'titles' : page,
+        'prop':'extracts',
+        'format':'json',
+        "exintro":"",
+        "explaintext":""
+    });
+    $.ajax( {
+        async: false,
+        url: wikiURL,
         dataType: 'jsonp',
-        success: function (x) {
-            console.log('title', x.query.search[0].title);
+        async:false,
+        success: function(data){
+            for(var a in data.query.pages){
+                callback(data.query.pages[a].extract);
+            }
         }
     });
-    return null;
 }
