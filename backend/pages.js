@@ -1,7 +1,7 @@
 
 function getBasicInformation(page){
     $.ajax({
-        url: '//en.wikipedia.org/w/api.php',
+        url: 'https://de.wikipedia.org/w/api.php',
         data: { action: 'query', list: 'search', srsearch: $("input[name=Wikipedia]").val(), format: 'json' },
         dataType: 'jsonp',
         success: function (x) {
