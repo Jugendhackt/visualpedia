@@ -42,6 +42,26 @@ function categories(page,callback){
         }
     });
 }
+function articleLinks(page,callback){
+    wikiURL = url+'/w/api.php?' + $.param({
+        'action' : 'parse',
+        'page' : page,
+        'format':'json'
+    });
+    $.ajax( {
+        async: false,
+        url: wikiURL,
+        dataType: 'jsonp',
+        async:false,
+        success: function(data){
+            for(var a in data.parse.links){
+                if(!data.parse.links[a]["*"].startsWith("Wikipedia:")&&data.parse.links[a]["*"] != page){
+                    callback(data.parse.links[a]["*"].replace(/_/g," "));
+                }
+            }
+        }
+    });
+}
 function articleLink(page,callback){
     callback(url+"/wiki/"+page);
 }

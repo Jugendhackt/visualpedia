@@ -44,11 +44,21 @@
                     $("#article").fadeIn(400);
                     $("#home").fadeOut(400);
                     $("#article-title").text($("#search-input").val());
-                    summary($("#search-input").val(),function(summary){
+                    summary($("#search-input").val(), function (summary) {
                         $("#article-summary").text(summary);
                     });
-                    articleLink($("#search-input").val(),function(link){
-                        $("#article-read-more").attr("href",link);
+                    articleLink($("#search-input").val(), function (link) {
+                        $("#article-read-more").attr("href", link);
+                    });
+                    $("#article-categories").empty();
+                    categories($("#search-input").val(), function (category) {
+                        var button = `<button class="btn btn-danger">${category}</button>`;
+                        $("#article-categories").append(button);
+                    });
+                    $("#article-links").empty();
+                    articleLinks($("#search-input").val(),function(article){
+                        var button = `<button class="btn btn-success">${article}</button>`;
+                        $("#article-links").append(button);
                     });
                 }, function () {
                     $("#error-modal").modal();
@@ -88,10 +98,11 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="form-inline my-2 my-lg-0">
-                <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Suche</button>
-            </form>
+            <form class="form-inline my-12 my-lg-0">
+                <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search"
+                    aria-label="Search">
+                    <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Suchen</button>
+                </form>
         </div>
     </nav>
     <div id="home">
@@ -105,14 +116,16 @@
     <div id="article">
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <div class="float-right">
-                    <button type="button" class="btn btn-secondary">Kategorie 1</button>
-                    <button type="button" class="btn btn-secondary">Kategorie 2</button>
-                </div>
                 <h1 class="display-4" id="article-title">Titel!</h1>
                 <hr class="my-4">
                 <p class="lead" id="article-summary">Beschreibung!</p>
                 <a class="btn btn-primary btn-lg" id="article-read-more" role="button">Lese mehr</a>
+                <hr class="my-4">
+                <div id="article-categories">
+                </div>
+                <hr class="my-4">
+                <div id="article-links">
+                </div>
             </div>
         </div>
     </div>

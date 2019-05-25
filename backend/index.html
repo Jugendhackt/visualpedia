@@ -12,6 +12,7 @@
             <button id="wiki-is-category-submit">Is category</button>
             <button id="wiki-is-page-submit">Is page</button>
             <button id="wiki-in-category-submit">In category</button>
+            <button id="wiki-linked-articles-submit">Linkes articles</button>
             <br>
         </form>
         <p id="description"></p>
@@ -28,7 +29,7 @@
         $("#wiki-topic-submit").click(function(event){
             event.preventDefault();
             $("#description").text("");
-            topics($("#wiki-name").val(),function(category){
+            categories($("#wiki-name").val(),function(category){
                 categoryLink(category,function(link){
                     $("#description").html($("#description").html()+`<a href="${link}">`+category+"</a><br>");
                 });
@@ -48,7 +49,7 @@
         $("#wiki-is-page-submit").click(function(event){
             event.preventDefault();
             $("#description").text("");
-            isPage($("#wiki-name").val(),function(){
+            isArticle($("#wiki-name").val(),function(){
                 alert("Yes");
             },function(){
                 alert("No");
@@ -60,6 +61,15 @@
             $("#description").text("");
             inCategory($("#wiki-name").val(),function(page){
                 $("#description").html($("#description").html()+page+"<br>");
+            });
+        
+            return false;
+        });
+        $("#wiki-linked-articles-submit").click(function(event){
+            event.preventDefault();
+            $("#description").text("");
+            articleLinks($("#wiki-name").val(),function(article){
+                $("#description").html($("#description").html()+article+"<br>");
             });
             return false;
         });
