@@ -1,7 +1,7 @@
-
-function getSummary(page,callback){
-    var wikiURL = "https://de.wikipedia.org/w/api.php";
-    wikiURL += '?' + $.param({
+var url = "https://de.wikipedia.org";
+var category = "Kategorie:";
+function summary(page,callback){
+    wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'query',
         'titles' : page,
         'prop':'extracts',
@@ -22,10 +22,8 @@ function getSummary(page,callback){
         }
     });
 }
-function getTopics(page,callback){
-    var summary;
-    var wikiURL = "https://de.wikipedia.org/w/api.php";
-    wikiURL += '?' + $.param({
+function topics(page,callback){
+    wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'parse',
         'page' : page,
         'format':'json'
@@ -36,7 +34,17 @@ function getTopics(page,callback){
         dataType: 'jsonp',
         async:false,
         success: function(data){
-            console.log(data);
+            for(var a in data.parse.categories){
+                if(!data.parse.categories[a]["*"].startsWith("Wikipedia:")&&data.parse.categories[a]["*"] != page){
+                    callback(data.parse.categories[a]["*"].replace(/_/g," "));
+                }
+            }
         }
     });
+}
+function articleLink(page,callback){
+    callback(url+"/wiki/"+page);
+}
+function categoryLink(page,callback){
+    callback(url+category+page);
 }

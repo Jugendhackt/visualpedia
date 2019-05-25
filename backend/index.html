@@ -11,7 +11,7 @@
             <br>
             <br>
             <input id="wiki-topic-name" type=text placeholder="Wiki-Page">
-            <button id="wiki-topic-submit" type="submit">Submit</button>
+            <button id="wiki-topic-submit" type="submit">Topics</button>
         </form>
         <p id="description"></p>
         <script>
@@ -20,7 +20,7 @@
         $("#wiki-page-submit").click(function(event){
             event.preventDefault();
             console.log($("#wiki-page-name").val());
-            getSummary($("#wiki-page-name").val(),function(text){
+            summary($("#wiki-page-name").val(),function(text){
                 console.log(text);
                 $("#description").text(text);
             });
@@ -28,8 +28,11 @@
         });
         $("#wiki-topic-submit").click(function(event){
             event.preventDefault();
-            getSummary($("#wiki-topic-name").val(),function(text){
-                console.log(text);
+            $("#description").text("");
+            topics($("#wiki-topic-name").val(),function(category){
+                link(category,function(link){
+                    $("#description").html($("#description").html()+category+"<br>");
+                });
             });
             return false;
         });
