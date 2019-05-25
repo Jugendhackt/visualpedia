@@ -17,7 +17,8 @@ function getSummary(page,callback){
         async:false,
         success: function(data){
             for(var a in data.query.pages){
-                callback(data.query.pages[a].extract);
+                var substr = data.query.pages[a].extract.split('\n');
+                callback(substr[0]);
             }
         }
     });
