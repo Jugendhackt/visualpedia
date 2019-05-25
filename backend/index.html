@@ -9,8 +9,8 @@
             <input id="wiki-name" type=text placeholder="Wiki-Page">
             <button id="wiki-page-submit">Get page</button>
             <button id="wiki-topic-submit">Get topics</button>
-            <button id="wiki-topic-submit">Is category</button>
-            <button id="wiki-topic-submit">Is page</button>
+            <button id="wiki-is-category-submit">Is category</button>
+            <button id="wiki-is-page-submit">Is page</button>
             <br>
         </form>
         <p id="description"></p>
@@ -18,9 +18,8 @@
             $(document).ready(function(){
         $("#wiki-page-submit").click(function(event){
             event.preventDefault();
-            console.log($("#wiki-name").val());
+            $("#description").text("");
             summary($("#wiki-name").val(),function(text){
-                console.log(text);
                 $("#description").text(text);
             });
             return false;
@@ -32,6 +31,26 @@
                 categoryLink(category,function(link){
                     $("#description").html($("#description").html()+`<a href="${link}">`+category+"</a><br>");
                 });
+            });
+            return false;
+        });
+        $("#wiki-is-category-submit").click(function(event){
+            event.preventDefault();
+            $("#description").text("");
+            isCategory($("#wiki-name").val(),function(){
+                alert("Yes");
+            },function(){
+                alert("No");
+            });
+            return false;
+        });
+        $("#wiki-is-page-submit").click(function(event){
+            event.preventDefault();
+            $("#description").text("");
+            isPage($("#wiki-name").val(),function(){
+                alert("Yes");
+            },function(){
+                alert("No");
             });
             return false;
         });

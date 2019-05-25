@@ -50,8 +50,8 @@ function categoryLink(page,callback){
 }
 function isPage(page,yesCallback,noCallback){
     wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'query',
-        'titles' : page,
+        'action' : 'parse',
+        'page' : page,
         'format':'json'
     });
     $.ajax( {
@@ -60,14 +60,18 @@ function isPage(page,yesCallback,noCallback){
         dataType: 'jsonp',
         async:false,
         success: function(data){
-            console.log(data);
+            if("error" in data){
+                noCallback();
+            }else{
+                yesCallback();
+            }
         }
     });
 }
 function isCategory(page,yesCallback,noCallback){
     wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'query',
-        'titles' : page,
+        'titles' : category+page,
         'format':'json'
     });
     $.ajax( {
@@ -76,7 +80,11 @@ function isCategory(page,yesCallback,noCallback){
         dataType: 'jsonp',
         async:false,
         success: function(data){
-            console.log(data);
+            if("-1" in data.query.pages){
+                noCallback();
+            }else{
+                yesCallback();
+            }
         }
     });
 }
