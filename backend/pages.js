@@ -22,7 +22,7 @@ function summary(page,callback){
         }
     });
 }
-function topics(page,callback){
+function categories(page,callback){
     wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'parse',
         'page' : page,
@@ -48,7 +48,7 @@ function articleLink(page,callback){
 function categoryLink(page,callback){
     callback(url+"/wiki/"+category+page);
 }
-function isPage(page,yesCallback,noCallback){
+function isArticle(page,yesCallback,noCallback){
     wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'parse',
         'page' : page,
@@ -85,6 +85,32 @@ function isCategory(page,yesCallback,noCallback){
             }else{
                 yesCallback();
             }
+        }
+    });
+}
+function inCategory(page,callback){
+    wikiURL = url+'/w/api.php?' + $.param({
+        'action': "query",
+        'list': "categorymembers",
+        'cmtitle' : "Category:"+page,
+        'format':'json'
+    });
+    $.ajax( {
+        async: false,
+        url: wikiURL,
+        dataType: 'jsonp',
+        async:false,
+        success: function(data){
+            for(var a in data.query.categorymembers){
+                var member = data.query.categorymembers[a].title;
+                console.log(member);
+                if(member.startsWith(category)){
+                    callback(member,true);
+                }else{
+                    callback(member,false);
+                }
+            }
+            callback()
         }
     });
 }

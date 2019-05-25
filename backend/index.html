@@ -11,6 +11,7 @@
             <button id="wiki-topic-submit">Get topics</button>
             <button id="wiki-is-category-submit">Is category</button>
             <button id="wiki-is-page-submit">Is page</button>
+            <button id="wiki-in-category-submit">In category</button>
             <br>
         </form>
         <p id="description"></p>
@@ -51,6 +52,14 @@
                 alert("Yes");
             },function(){
                 alert("No");
+            });
+            return false;
+        });
+        $("#wiki-in-category-submit").click(function(event){
+            event.preventDefault();
+            $("#description").text("");
+            inCategory($("#wiki-name").val(),function(page){
+                $("#description").html($("#description").html()+page+"<br>");
             });
             return false;
         });
