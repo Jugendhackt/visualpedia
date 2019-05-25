@@ -16,7 +16,6 @@
         <p id="description"></p>
         <script>
             $(document).ready(function(){
-            });
         $("#wiki-page-submit").click(function(event){
             event.preventDefault();
             console.log($("#wiki-page-name").val());
@@ -30,12 +29,13 @@
             event.preventDefault();
             $("#description").text("");
             topics($("#wiki-topic-name").val(),function(category){
-                link(category,function(link){
-                    $("#description").html($("#description").html()+category+"<br>");
+                categoryLink(category,function(link){
+                    $("#description").html($("#description").html()+`<a href="${link}">`+category+"</a><br>");
                 });
             });
             return false;
         });
+            });
             </script>
     </body>
 </html>

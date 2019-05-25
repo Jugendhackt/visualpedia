@@ -46,5 +46,21 @@ function articleLink(page,callback){
     callback(url+"/wiki/"+page);
 }
 function categoryLink(page,callback){
-    callback(url+category+page);
+    callback(url+"/wiki/"+category+page);
+}
+function exist(page,yesCallback,noCallback){
+    wikiURL = url+'/w/api.php?' + $.param({
+        'action' : 'query',
+        'titles' : page,
+        'format':'json'
+    });
+    $.ajax( {
+        async: false,
+        url: wikiURL,
+        dataType: 'jsonp',
+        async:false,
+        success: function(data){
+            console.log(data);
+        }
+    });
 }
