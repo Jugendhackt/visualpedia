@@ -6,20 +6,18 @@
     </head>
     <body>
         <form>
-            <input id="wiki-page-name" type=text placeholder="Wiki-Page">
-            <button id="wiki-page-submit" type="submit">Submit</button>
+            <input id="wiki-name" type=text placeholder="Wiki-Page">
+            <button id="wiki-page-submit">Get page</button>
+            <button id="wiki-topic-submit">Get topics</button>
             <br>
-            <br>
-            <input id="wiki-topic-name" type=text placeholder="Wiki-Page">
-            <button id="wiki-topic-submit" type="submit">Topics</button>
         </form>
         <p id="description"></p>
         <script>
             $(document).ready(function(){
         $("#wiki-page-submit").click(function(event){
             event.preventDefault();
-            console.log($("#wiki-page-name").val());
-            summary($("#wiki-page-name").val(),function(text){
+            console.log($("#wiki-name").val());
+            summary($("#wiki-name").val(),function(text){
                 console.log(text);
                 $("#description").text(text);
             });
@@ -28,7 +26,7 @@
         $("#wiki-topic-submit").click(function(event){
             event.preventDefault();
             $("#description").text("");
-            topics($("#wiki-topic-name").val(),function(category){
+            topics($("#wiki-name").val(),function(category){
                 categoryLink(category,function(link){
                     $("#description").html($("#description").html()+`<a href="${link}">`+category+"</a><br>");
                 });
