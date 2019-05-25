@@ -8,6 +8,10 @@
         <form>
             <input id="wiki-page-name" type=text placeholder="Wiki-Page">
             <button id="wiki-page-submit" type="submit">Submit</button>
+            <br>
+            <br>
+            <input id="wiki-topic-name" type=text placeholder="Wiki-Page">
+            <button id="wiki-topic-submit" type="submit">Submit</button>
         </form>
         <p id="description"></p>
         <script>
@@ -16,10 +20,16 @@
         $("#wiki-page-submit").click(function(event){
             event.preventDefault();
             console.log($("#wiki-page-name").val());
-            console.log("Test");
             getSummary($("#wiki-page-name").val(),function(text){
                 console.log(text);
                 $("#description").text(text);
+            });
+            return false;
+        });
+        $("#wiki-topic-submit").click(function(event){
+            event.preventDefault();
+            getSummary($("#wiki-topic-name").val(),function(text){
+                console.log(text);
             });
             return false;
         });
