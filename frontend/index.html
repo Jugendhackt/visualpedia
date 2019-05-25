@@ -30,6 +30,28 @@
     <script src="assets/js/material.min.js"></script>
     <script src="../backend/pages.js"></script>
     <script>
+        function showArticle(page){
+                    $("#article").fadeIn(400);
+                    $("#home").fadeOut(400);
+                    $("#article-title").text(page);
+                    summary(page, function (summary) {
+                        console.log(summary);
+                        $("#article-summary").html(summary.replace(/\n/g,"<br>"));
+                    });
+                    articleLink(page, function (link) {
+                        $("#article-read-more").attr("href", link);
+                    });
+                    $("#article-categories").empty();
+                    categories(page, function (category) {
+                        var button = `<button class="btn btn-danger">${category}</button>`;
+                        $("#article-categories").append(button);
+                    });
+                    $("#article-links").empty();
+                    articleLinks(page,function(article){
+                        var button = `<button class="btn btn-success">${article}</button>`;
+                        $("#article-links").append(button);
+                    });
+        }
         $(document).ready(function () {
             $("#article").hide();
             $("#home-button").click(function (event) {
@@ -41,25 +63,7 @@
             $("#search-button").click(function (event) {
                 event.preventDefault();
                 isArticle($("#search-input").val(), function () {
-                    $("#article").fadeIn(400);
-                    $("#home").fadeOut(400);
-                    $("#article-title").text($("#search-input").val());
-                    summary($("#search-input").val(), function (summary) {
-                        $("#article-summary").text(summary);
-                    });
-                    articleLink($("#search-input").val(), function (link) {
-                        $("#article-read-more").attr("href", link);
-                    });
-                    $("#article-categories").empty();
-                    categories($("#search-input").val(), function (category) {
-                        var button = `<button class="btn btn-danger">${category}</button>`;
-                        $("#article-categories").append(button);
-                    });
-                    $("#article-links").empty();
-                    articleLinks($("#search-input").val(),function(article){
-                        var button = `<button class="btn btn-success">${article}</button>`;
-                        $("#article-links").append(button);
-                    });
+                    showArticle($("#search-input").val());
                 }, function () {
                     $("#error-modal").modal();
                 });

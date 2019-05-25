@@ -15,9 +15,17 @@ function summary(page,callback){
         dataType: 'jsonp',
         async:false,
         success: function(data){
+            console.log(data);
             for(var a in data.query.pages){
                 var substr = data.query.pages[a].extract.split('\n');
-                callback(substr[0]);
+                var summary = "";
+                    for(var i in substr){
+                        summary+=substr[i]+"\n";
+                        if(summary.length > 50 && !summary.endsWith(":")){
+                            callback(summary);
+                            return;
+                        }
+                    }
             }
         }
     });
