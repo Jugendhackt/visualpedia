@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+
+    <!-- CSS -->
+    <!-- Add Material font (Roboto) and Material icon as needed -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Roboto+Mono:300,400,700|Roboto+Slab:300,400,700"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Add Material CSS, replace Bootstrap CSS -->
+    <link href="assets/css/material.min.css" rel="stylesheet">
+
+    <title>VisualPedia - Home</title>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+    <!-- Then Material JavaScript on top of Bootstrap JavaScript -->
+    <script src="assets/js/material.min.js"></script>
+    <script src="../backend/pages.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#article").hide();
+            $("#home-button").click(function (event) {
+                event.preventDefault();
+                $("#home").fadeIn(400);
+                $("#article").fadeOut(400);
+                return false;
+            });
+            $("#search-button").click(function (event) {
+                event.preventDefault();
+                isArticle($("#search-input").val(), function () {
+                    $("#article").fadeIn(400);
+                    $("#home").fadeOut(400);
+                    $("#article-title").text($("#search-input").val());
+                    summary($("#search-input").val(),function(summary){
+                        $("#article-summary").text(summary);
+                    });
+                    articleLink($("#search-input").val(),function(link){
+                        $("#article-read-more").attr("href",link);
+                    });
+                }, function () {
+                    $("#error-modal").modal();
+                });
+                return false;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error-modal-label"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="error-modal-label">Fehler!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Diese Wikipedia Seite wurde leider nicht gefunden! Bitte versuchen Sie es mit einem anderen Begriff!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" id="home-button">VisualPedia</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0">
+                <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Suche</button>
+            </form>
+        </div>
+    </nav>
+    <div id="home">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 class="display-4">Willkommen auf VisualPedia!</h1>
+                <p class="lead">Dein Wikipedia in verständlich!</p>
+            </div>
+        </div>
+    </div>
+    <div id="article">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <div class="float-right">
+                    <button type="button" class="btn btn-secondary">Kategorie 1</button>
+                    <button type="button" class="btn btn-secondary">Kategorie 2</button>
+                </div>
+                <h1 class="display-4" id="article-title">Titel!</h1>
+                <hr class="my-4">
+                <p class="lead" id="article-summary">Beschreibung!</p>
+                <a class="btn btn-primary btn-lg" id="article-read-more" role="button">Lese mehr</a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
