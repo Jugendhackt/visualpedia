@@ -43,7 +43,7 @@
             });
             $("#article-categories").empty();
             categories(page, function (category) {
-                var button = `<button class="btn btn-danger">${category}</button>`;
+                var button = `<button onclick="showCategory('${category}');" class="btn btn-danger">${category}</button>`;
                 $("#article-categories").append(button);
             });
             $("#article-links").empty();
@@ -51,6 +51,15 @@
                 var button = `<button onclick="showArticle('${article}');" class="btn btn-success">${article}</a>`;
                 $("#article-links").append(button);
             });
+        }
+        function showCategory(page) {
+
+            $("#category-modal-title").text(page);
+            $("#category-modal-body").empty();
+            inCategory(page,function(article){
+                $("#category-modal-body").html($("#category-modal-body").html()+`<button onClick="$('#category-modal').modal('hide');showArticle('${article}');" class="btn btn-success">${article}</button>`);
+            });
+            $("#category-modal").modal();
         }
         $(document).ready(function () {
             $("#article").hide();
@@ -73,7 +82,25 @@
     </script>
 </head>
 
-<body>
+<body><!-- Modal -->
+    <div class="modal fade" id="category-modal" tabindex="-1" role="dialog" aria-labelledby="category-modal-title" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="category-modal-title">:)</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="category-modal-body">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="modal fade" id="error-modal" tabindex="-1" role="dialog" aria-labelledby="error-modal-label"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
