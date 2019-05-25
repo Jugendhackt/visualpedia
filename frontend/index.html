@@ -30,27 +30,27 @@
     <script src="assets/js/material.min.js"></script>
     <script src="../backend/pages.js"></script>
     <script>
-        function showArticle(page){
-                    $("#article").fadeIn(400);
-                    $("#home").fadeOut(400);
-                    $("#article-title").text(page);
-                    summary(page, function (summary) {
-                        console.log(summary);
-                        $("#article-summary").html(summary.replace(/\n/g,"<br>"));
-                    });
-                    articleLink(page, function (link) {
-                        $("#article-read-more").attr("href", link);
-                    });
-                    $("#article-categories").empty();
-                    categories(page, function (category) {
-                        var button = `<button class="btn btn-danger">${category}</button>`;
-                        $("#article-categories").append(button);
-                    });
-                    $("#article-links").empty();
-                    articleLinks(page,function(article){
-                        var button = `<button class="btn btn-success">${article}</button>`;
-                        $("#article-links").append(button);
-                    });
+        function showArticle(page) {
+            $("#article").fadeIn(400);
+            $("#home").fadeOut(400);
+            $("#article-title").text(page);
+            summary(page, function (summary) {
+                console.log(summary);
+                $("#article-summary").html(summary.replace(/\n/g, "<br>"));
+            });
+            articleLink(page, function (link) {
+                $("#article-read-more").attr("href", link);
+            });
+            $("#article-categories").empty();
+            categories(page, function (category) {
+                var button = `<button class="btn btn-danger">${category}</button>`;
+                $("#article-categories").append(button);
+            });
+            $("#article-links").empty();
+            articleLinks(page, function (article) {
+                var button = `<button onclick="showArticle('${article}');" class="btn btn-success">${article}</a>`;
+                $("#article-links").append(button);
+            });
         }
         $(document).ready(function () {
             $("#article").hide();
@@ -105,8 +105,8 @@
             <form class="form-inline my-12 my-lg-0">
                 <input id="search-input" class="form-control mr-sm-2" type="search" placeholder="Search"
                     aria-label="Search">
-                    <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Suchen</button>
-                </form>
+                <button id="search-button" class="btn btn-outline-success my-2 my-sm-0" type="button">Suchen</button>
+            </form>
         </div>
     </nav>
     <div id="home">
