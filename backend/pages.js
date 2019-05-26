@@ -1,6 +1,7 @@
 var url = "https://de.wikipedia.org";
 var category = "Kategorie:";
 function summary(page,callback){
+    console.log("sum");
     wikiURL = url+'/w/api.php?' + $.param({
         'action' : 'query',
         'titles' : page,
@@ -9,13 +10,12 @@ function summary(page,callback){
         "exintro":"",
         "explaintext":""
     });
+    console.log(wikiURL);
     $.ajax( {
-        async: false,
         url: wikiURL,
         dataType: 'jsonp',
-        async:false,
         success: function(data){
-            console.log(data);
+            console.log("B");
             for(var a in data.query.pages){
                 var substr = data.query.pages[a].extract.split('\n');
                 var summary = "";
@@ -131,7 +131,6 @@ function inCategory(page,callback){
         success: function(data){
             for(var a in data.query.categorymembers){
                 var member = data.query.categorymembers[a].title;
-                console.log(member);
                 if(member.startsWith(category)){
                     callback(member,true);
                 }else{
