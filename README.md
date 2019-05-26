@@ -1,9 +1,9 @@
 # visualpedia
 We visualize wikipedia for you!
 
-A continue to this project can you find [here](https://github.com/codedoctorde/visualpedia)
+Wiki: [Click here](https://github.com/codedoctorde/visualpedia/wiki)
 
-To the website: [here](https://jugendhackt.github.io/visualpedia/frontend/index.html)
+To the website: [here](https://codedoctorde.github.io/visualpedia/frontend/index.html)
 
 Pictures:
 
