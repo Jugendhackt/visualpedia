@@ -58,13 +58,14 @@
                 checkLoading(load);
             });
             articleLinks(page, function (article) {
-                var button = `<button onclick="showArticle('${article}');" class="btn btn-success">${article}</a>`;
+                var button = `<button onclick="showLoading();showArticle('${article}');" class="btn btn-success">${article}</a>`;
                 $("#article-links").append(button);
                 load++;
                 checkLoading(load);
             });
             images(page, function (image, index) {
-                if (image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg" && image != "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg" && image != "https://upload.wikimedia.org/wikipedia/commons/5/58/Magnifying_glass.png" && image != "https://upload.wikimedia.org/wikipedia/commons/b/b7/Qsicon_Quelle.svg"){
+                if (image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg" && image != "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg" && image != "https://upload.wikimedia.org/wikipedia/commons/5/58/Magnifying_glass.png" && image != "https://upload.wikimedia.org/wikipedia/commons/b/b7/Qsicon_Quelle.svg" &&
+                image != "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg"){
                     var indicator;
                     var inner;
                     console.log(index);
@@ -138,6 +139,9 @@
         .article-image {
             max-width: 30em;
             max-height: 30em;
+        }
+        .summary{
+            font-size: 2em;
         }
     </style>
 </head>
@@ -259,7 +263,7 @@
             <div class="container">
                 <h1 class="display-4" id="article-title"></h1>
                 <hr class="my-4">
-                <p class="lead" id="article-summary">!</p>
+                <p class="summary" id="article-summary"></p>
                 <a class="btn btn-primary btn-lg" id="article-read-more" role="button">Mehr lesen</a>
                 <hr class="my-4">
 
@@ -278,10 +282,14 @@
                     </a>
                 </div>
                 <hr class="my-4">
-                <div id="article-categories">
+                <div>
+                    <p class="lead">Kategorien:</p>
+                    <div id="article-categories"></div>
                 </div>
                 <hr class="my-4">
-                <div id="article-links">
+                <div>
+                    <p class="lead">Verwandte Artikel:</p>
+                    <div id="article-links"></div>
                 </div>
             </div>
         </div>
