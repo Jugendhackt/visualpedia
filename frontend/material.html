@@ -64,12 +64,16 @@
                 checkLoading(load);
             });
             images(page, function (image, index) {
-                if (image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg" && 
-                image != "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg" && 
-                image != "https://upload.wikimedia.org/wikipedia/commons/5/58/Magnifying_glass.png" && 
-                image != "https://upload.wikimedia.org/wikipedia/commons/b/b7/Qsicon_Quelle.svg" &&
-                image != "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg" &&
-                image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Commons-logo.svg"){
+                var deniedSources = ["https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Magnifying_glass.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Qsicon_Quelle.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/4/4a/Commons-logo.svg",
+                "https://upload.wikimedia.org/wikipedia/commons/8/8a/Loudspeaker.svg"
+                ];
+                var endings = ["jpg","svg","png","jpeg","p"]
+                if(deniedSources.contains(page) && page.endsWith(endings)){
                     var indicator;
                     var inner;
                     console.log(index);
