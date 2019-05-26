@@ -4,7 +4,7 @@ We visualize wikipedia for you!
 Wiki: [Click here](https://github.com/codedoctorde/visualpedia/wiki)
 
 To the website: [here](https://codedoctorde.github.io/visualpedia)
---> [Frontend](https://codedoctorde.github.io/visualpedia/frontend/index.html)
+--> [Frontend](https://codedoctorde.github.io/visualpedia/frontend)
 
 Pictures:
 
