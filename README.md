@@ -15,5 +15,6 @@ Pictures:
 
 CC-by (Creative Commons By):
 
-English: https://creativecommons.org/licenses/by/2.0/
-Deutsch: https://creativecommons.org/licenses/by/2.0/de/
+English: https://creativecommons.org/licenses/by/2.0/ 
+
+Deutsch: https://creativecommons.org/licenses/by/2.0/de/  
