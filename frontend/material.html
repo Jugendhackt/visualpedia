@@ -27,7 +27,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
     <!-- Then Material JavaScript on top of Bootstrap JavaScript -->
-    <script src="https://daemonite.github.io/material/js/material.min.js"></script>
+    <script src="daemonite.github.io/material/js/material.min.js"></script>
     <script src="../backend/pages.js"></script>
     <script>
         function showArticle(page) {
@@ -64,6 +64,12 @@
                 checkLoading(load);
             });
             images(page, function (image, index) {
+                if (image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg" && 
+                image != "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg" && 
+                image != "https://upload.wikimedia.org/wikipedia/commons/5/58/Magnifying_glass.png" && 
+                image != "https://upload.wikimedia.org/wikipedia/commons/b/b7/Qsicon_Quelle.svg" &&
+                image != "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg" &&
+                image != "https://upload.wikimedia.org/wikipedia/commons/4/4a/Commons-logo.svg"){
                     var indicator;
                     var inner;
                     console.log(index);
@@ -79,6 +85,9 @@
                     var inner = ``;
                     load++;
                     checkLoading(load);
+                }
+
+                
             });
         }
         function checkLoading(load) {
