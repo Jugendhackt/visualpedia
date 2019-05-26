@@ -1,143 +1,179 @@
 var url = "https://de.wikipedia.org";
 var category = "Kategorie:";
-function summary(page,callback){
-    console.log("sum");
-    wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'query',
-        'titles' : page,
-        'prop':'extracts',
-        'format':'json',
-        "exintro":"",
-        "explaintext":""
+function summary(page, callback) {
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'query',
+        'titles': page,
+        'prop': 'extracts',
+        'format': 'json',
+        "exintro": "",
+        "explaintext": ""
     });
-    console.log(wikiURL);
-    $.ajax( {
+    $.ajax({
         url: wikiURL,
         dataType: 'jsonp',
-        success: function(data){
-            console.log("B");
-            for(var a in data.query.pages){
+        success: function (data) {
+            for (var a in data.query.pages) {
                 var substr = data.query.pages[a].extract.split('\n');
                 var summary = "";
-                    for(var i in substr){
-                        summary+=substr[i]+"\n";
-                        if(summary.length > 50 && !summary.endsWith(":")){
-                            callback(summary);
-                            return;
-                        }
+                for (var i in substr) {
+                    summary += substr[i] + "\n";
+                    if (summary.length > 50 && !summary.endsWith(":")) {
+                        callback(summary);
+                        return;
                     }
-            }
-        }
-    });
-}
-function categories(page,callback){
-    wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'parse',
-        'page' : page,
-        'format':'json'
-    });
-    $.ajax( {
-        async: false,
-        url: wikiURL,
-        dataType: 'jsonp',
-        async:false,
-        success: function(data){
-            for(var a in data.parse.categories){
-                if(!data.parse.categories[a]["*"].startsWith("Wikipedia:")&&data.parse.categories[a]["*"] != page){
-                    callback(data.parse.categories[a]["*"].replace(/_/g," "));
                 }
             }
         }
     });
 }
-function articleLinks(page,callback){
-    wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'parse',
-        'page' : page,
-        'format':'json'
+function categories(page, callback) {
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'parse',
+        'page': page,
+        'format': 'json'
     });
-    $.ajax( {
+    $.ajax({
         async: false,
         url: wikiURL,
         dataType: 'jsonp',
-        async:false,
-        success: function(data){
-            for(var a in data.parse.links){
-                if(!data.parse.links[a]["*"].startsWith("Wikipedia:")&&data.parse.links[a]["*"] != page){
-                    callback(data.parse.links[a]["*"].replace(/_/g," "));
+        async: false,
+        success: function (data) {
+            for (var a in data.parse.categories) {
+                if (!data.parse.categories[a]["*"].startsWith("Wikipedia:") && data.parse.categories[a]["*"] != page) {
+                    callback(data.parse.categories[a]["*"].replace(/_/g, " "));
                 }
             }
         }
     });
 }
-function articleLink(page,callback){
-    callback(url+"/wiki/"+page);
-}
-function categoryLink(page,callback){
-    callback(url+"/wiki/"+category+page);
-}
-function isArticle(page,yesCallback,noCallback){
-    wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'parse',
-        'page' : page,
-        'format':'json'
+function articleLinks(page, callback) {
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'parse',
+        'page': page,
+        'format': 'json'
     });
-    $.ajax( {
+    $.ajax({
         async: false,
         url: wikiURL,
         dataType: 'jsonp',
-        async:false,
-        success: function(data){
-            if("error" in data){
+        async: false,
+        success: function (data) {
+            for (var a in data.parse.links) {
+                if (!data.parse.links[a]["*"].startsWith("Wikipedia:") && data.parse.links[a]["*"] != page) {
+                    callback(data.parse.links[a]["*"].replace(/_/g, " "));
+                }
+            }
+        }
+    });
+}
+function articleLink(page, callback) {
+    callback(url + "/wiki/" + page);
+}
+function categoryLink(page, callback) {
+    callback(url + "/wiki/" + category + page);
+}
+function isArticle(page, yesCallback, noCallback) {
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'parse',
+        'page': page,
+        'format': 'json'
+    });
+    $.ajax({
+        async: false,
+        url: wikiURL,
+        dataType: 'jsonp',
+        async: false,
+        success: function (data) {
+            if ("error" in data) {
                 noCallback();
-            }else{
+            } else {
                 yesCallback();
             }
         }
     });
 }
-function isCategory(page,yesCallback,noCallback){
-    wikiURL = url+'/w/api.php?' + $.param({
-        'action' : 'query',
-        'titles' : category+page,
-        'format':'json'
+function isCategory(page, yesCallback, noCallback) {
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'query',
+        'titles': category + page,
+        'format': 'json'
     });
-    $.ajax( {
+    $.ajax({
         async: false,
         url: wikiURL,
         dataType: 'jsonp',
-        async:false,
-        success: function(data){
-            if("-1" in data.query.pages){
+        async: false,
+        success: function (data) {
+            if ("-1" in data.query.pages) {
                 noCallback();
-            }else{
+            } else {
                 yesCallback();
             }
         }
     });
 }
-function inCategory(page,callback){
-    wikiURL = url+'/w/api.php?' + $.param({
+function inCategory(page, callback) {
+    wikiURL = url + '/w/api.php?' + $.param({
         'action': "query",
         'list': "categorymembers",
-        'cmtitle' : "Category:"+page,
-        'format':'json'
+        'cmtitle': "Category:" + page,
+        'format': 'json'
     });
-    $.ajax( {
+    $.ajax({
         async: false,
         url: wikiURL,
         dataType: 'jsonp',
-        async:false,
-        success: function(data){
-            for(var a in data.query.categorymembers){
+        async: false,
+        success: function (data) {
+            for (var a in data.query.categorymembers) {
                 var member = data.query.categorymembers[a].title;
-                if(member.startsWith(category)){
-                    callback(member,true);
-                }else{
-                    callback(member,false);
+                if (member.startsWith(category)) {
+                    callback(member, true);
+                } else {
+                    callback(member, false);
                 }
             }
             callback()
+        }
+    });
+}
+function images(page, callback) {
+    var index = 0;
+    wikiURL = url + '/w/api.php?' + $.param({
+        'action': 'parse',
+        'page': page,
+        'format': 'json'
+    });
+    $.ajax({
+        async: false,
+        url: wikiURL,
+        dataType: 'jsonp',
+        async: false,
+        success: function (data) {
+            for (var a in data.parse.images) {
+                wikiURL = url + '/w/api.php?' + $.param({
+                    'action': 'query',
+                    'titles': "Image:" + data.parse.images[a],
+                    'prop': 'imageinfo',
+                    'iiprop': 'url',
+                    'format': 'json'
+                });
+                $.ajax({
+                    async: false,
+                    url: wikiURL,
+                    dataType: 'jsonp',
+                    async: false,
+                    success: function (data) {
+                        if ("-1" in data.query.pages)
+                            if ("imageinfo" in data.query.pages["-1"])
+                                for (var a in data.query.pages["-1"].imageinfo){
+                                    callback(data.query.pages["-1"].imageinfo[a].url, index);
+                                    index++;
+                                }
+                    }
+                });
+            }
         }
     });
 }

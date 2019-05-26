@@ -28,7 +28,7 @@
         });
         $("#wiki-topic-submit").click(function(event){
             event.preventDefault();
-            $("#description").text("");
+            $("#description").text(""); 
             categories($("#wiki-name").val(),function(category){
                 categoryLink(category,function(link){
                     $("#description").html($("#description").html()+`<a href="${link}">`+category+"</a><br>");
