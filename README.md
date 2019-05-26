@@ -9,3 +9,11 @@ Pictures:
 
 ![Picture-1](https://jugendhackt.github.io/visualpedia/1.png "Backend")
 ![Picture-1](https://jugendhackt.github.io/visualpedia/2.png "Frontend")
+
+
+# License
+
+CC-by (Creative Commons By):
+
+English: https://creativecommons.org/licenses/by/2.0/
+Deutsch: https://creativecommons.org/licenses/by/2.0/de/
