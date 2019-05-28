@@ -4,8 +4,6 @@ GitHub Repository:
 * [Jugend hackt](https://github.com/jugendhackt/visualpedia)
 * [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpedia)
 
-Wiki: [Click here](https://github.com/codedoctorde/visualpedia/wiki)
-
 To the website: [here](https://codedoctorde.github.io/visualpedia)
 --> [Frontend](https://codedoctorde.github.io/visualpedia/frontend)
 
