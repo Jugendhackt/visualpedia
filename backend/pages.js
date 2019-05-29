@@ -1,5 +1,6 @@
 var url = "https://de.wikipedia.org";
 var category = "Kategorie:";
+var blackList = ["Vorlage:"];
 function summary(page, callback) {
     wikiURL = url + '/w/api.php?' + $.param({
         'action': 'query',
@@ -14,15 +15,20 @@ function summary(page, callback) {
         dataType: 'jsonp',
         success: function (data) {
             for (var a in data.query.pages) {
-                var substr = data.query.pages[a].extract.split('\n');
+                var subStr = data.query.pages[a].extract.split('\n');
                 var summary = "";
-                for (var i in substr) {
-                    summary += substr[i] + "\n";
-                    if (summary.length > 50 && !summary.endsWith(":")) {
-                        callback(summary);
-                        return;
+                for(var string in subStr){
+                    var allow = true;
+                    for(var a in blackList){
+                        if(string.includes(a)){
+                            allow = false;
+                        }
+                    }
+                    if(allow){
+                        summary+=subStr;
                     }
                 }
+                callback(summary);
             }
         }
     });
