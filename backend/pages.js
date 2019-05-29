@@ -14,15 +14,8 @@ function summary(page, callback) {
         dataType: 'jsonp',
         success: function (data) {
             for (var a in data.query.pages) {
-                var substr = data.query.pages[a].extract.split('\n');
-                var summary = "";
-                for (var i in substr) {
-                    summary += substr[i] + "\n";
-                    if (summary.length > 50 && !summary.endsWith(":")) {
-                        callback(summary);
-                        return;
-                    }
-                }
+                var summary = data.query.pages[a].extract;
+                callback(summary);
             }
         }
     });
