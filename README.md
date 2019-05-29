@@ -1,11 +1,21 @@
 # visualpedia
 We visualize wikipedia for you!
+GitHub Repository: 
+* [Jugend hackt](https://github.com/jugendhackt/visualpedia)
+* [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpedia)
 
-**Deprecated!** --> A continue to this project can you find [here](https://github.com/codedoctorde/visualpedia)
-
-To the website: [here](https://jugendhackt.github.io/visualpedia/frontend/index.html)
+To the website: [here](https://codedoctorde.github.io/visualpedia)
+--> [Frontend](https://codedoctorde.github.io/visualpedia/frontend)
 
 Pictures:
 
-![Picture-1](https://jugendhackt.github.io/visualpedia/1.png "Backend")
-![Picture-1](https://jugendhackt.github.io/visualpedia/2.png "Frontend")
+![Picture-1](https://codedoctorde.github.io/visualpedia/1.png "Backend")
+![Picture-1](https://codedoctorde.github.io/visualpedia/2.png "Frontend")
+
+
+# License
+
+CC-by (Creative Commons By):
+
+* [English](https://creativecommons.org/licenses/by/2.0/) 
+* [Deutsch](https://creativecommons.org/licenses/by/2.0/de/) 
