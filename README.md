@@ -5,8 +5,8 @@ GitHub Repository:
 * [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpedia)
 
 To the website: [here](https://codedoctorde.github.io/visualpedia) 
---> [Frontend](https://codedoctorde.github.io/visualpedia/frontend) 
---> [Wiki](https://github.com/codedoctorde/visualpedia/wiki)
+* [Frontend](https://codedoctorde.github.io/visualpedia/frontend) 
+* [Wiki](https://github.com/codedoctorde/visualpedia/wiki)
 
 Pictures:
 
