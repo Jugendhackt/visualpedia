@@ -15,7 +15,7 @@ function summary(page, callback) {
         dataType: 'jsonp',
         success: function (data) {
             for (var a in data.query.pages) {
-                var subStr = data.query.pages[a].extract[0].subStr();
+                var subStr = data.query.pages[a].extract.subStr();
                 var summary = "";
                 for(var string in subStr){
                     var allow = true;
