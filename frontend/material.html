@@ -73,7 +73,7 @@
                 "https://upload.wikimedia.org/wikipedia/commons/8/8a/Loudspeaker.svg"
                 ];
                 var endings = ["jpg","svg","png","jpeg","p"];
-                if(deniedSources.contains(page) && page.endsWith(endings)){
+                if(deniedSources.includes(page) && page.endsWith(endings)){
                     var indicator;
                     var inner;
                     console.log(index);
