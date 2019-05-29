@@ -1,6 +1,6 @@
 var url = "https://de.wikipedia.org";
 var category = "Kategorie:";
-var blackList = ["Vorlage"];
+var blackList = ["Vorlage:"];
 function summary(page, callback) {
     wikiURL = url + '/w/api.php?' + $.param({
         'action': 'query',
