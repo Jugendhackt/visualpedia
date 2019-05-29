@@ -17,7 +17,7 @@ function summary(page, callback) {
             for (var a in data.query.pages) {
                 var subStr = data.query.pages[a].extract;
                 var summary = "";
-                for(var string in subStr)[
+                for(var string in subStr){
                     var allow = true;
                     for(var a in blackList){
                         if(string.includes(a)){
