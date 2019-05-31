@@ -1,5 +1,5 @@
-# visualpedia
-We visualize wikipedia for you!
+# visualpage
+We visualize pages for you!
 GitHub Repository: 
 * [Jugend hackt](https://github.com/jugendhackt/visualpedia)
 * [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpedia)
