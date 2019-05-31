@@ -1,4 +1,4 @@
-# visuualpage
+# visualpage
 We visualize pages for you!
 GitHub Repository: 
 * [Jugend hackt](https://github.com/jugendhackt/visualpage)
