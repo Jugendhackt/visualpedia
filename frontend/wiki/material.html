@@ -65,15 +65,15 @@
             });
             images(page, function (image, index) {
                 var deniedSources = ["https://upload.wikimedia.org/wikipedia/commons/4/4a/Pictogram_voting_info.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Magnifying_glass.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/c/c3/Qsicon_Quelle.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/4/4a/Commons-logo.svg",
-                "https://upload.wikimedia.org/wikipedia/commons/8/8a/Loudspeaker.svg"
+                    "https://upload.wikimedia.org/wikipedia/commons/c/c3/Wiktfavicon_en.svg",
+                    "https://upload.wikimedia.org/wikipedia/commons/c/c3/Magnifying_glass.svg",
+                    "https://upload.wikimedia.org/wikipedia/commons/c/c3/Qsicon_Quelle.svg",
+                    "https://upload.wikimedia.org/wikipedia/commons/e/ea/Disambig-dark.svg",
+                    "https://upload.wikimedia.org/wikipedia/commons/4/4a/Commons-logo.svg",
+                    "https://upload.wikimedia.org/wikipedia/commons/8/8a/Loudspeaker.svg"
                 ];
-                var endings = ["jpg","svg","png","jpeg","p"];
-                if(deniedSources.includes(page) && page.endsWith(endings)){
+                var endings = ["jpg", "svg", "png", "jpeg", "p"];
+                if (deniedSources.includes(page) && page.endsWith(endings)) {
                     var indicator;
                     var inner;
                     console.log(index);
@@ -91,7 +91,7 @@
                     checkLoading(load);
                 }
 
-                
+
             });
         }
         function checkLoading(load) {
@@ -148,7 +148,8 @@
             max-width: 30em;
             max-height: 30em;
         }
-        .summary{
+
+        .summary {
             font-size: 1.5em;
         }
     </style>
