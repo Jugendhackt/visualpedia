@@ -1,12 +1,12 @@
 # visualpage
 We visualize pages for you!
 GitHub Repository: 
-* [Jugend hackt](https://github.com/jugendhackt/visualpage)
-* [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpage)
+* [Jugend hackt](https://github.com/jugendhackt/visualpage/)
+* [CodeDoctorDE (Current most updated repository)](https://github.com/codedoctorde/visualpage/)
 
-To the website: [here](https://codedoctorde.github.io/visualpage) 
-* [Frontend](https://codedoctorde.github.io/visualpage/frontend) 
-* [Wiki](https://github.com/codedoctorde/visualpage/wiki)
+To the website: [here](https://codedoctorde.github.io/visualpage/) 
+* [Frontend](https://codedoctorde.github.io/visualpage/frontend/) 
+* [Wiki](https://github.com/codedoctorde/visualpage/wiki/)
 
 Pictures:
 
