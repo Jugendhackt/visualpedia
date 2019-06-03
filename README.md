@@ -10,8 +10,8 @@ To the website: [here](https://codedoctorde.github.io/visualpage/)
 
 Pictures:
 
-![Picture-1](https://codedoctorde.github.io/visualpage/1.png "Backend")
-![Picture-1](https://codedoctorde.github.io/visualpage/2.png "Frontend")
+![Picture-1](1.png "Backend")
+![Picture-1](2.png "Frontend")
 
 
 # License
