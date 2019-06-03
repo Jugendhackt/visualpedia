@@ -1,6 +1,4 @@
-# Frontend
+# Front-End
 
-Where do you want to go?
-
-* [Wiki](https://codedoctorde.github.io/visualpage/frontend/wiki/)
-* [Custom Page](https://codedoctorde.github.io/visualpage/frontend/custom-page/)
+* [Material site](https://codedoctorde.github.io/visualpage/frontend/wiki/material.html)
+* [Our own styled site](https://codedoctorde.github.io/visualpage/frontend/wiki/own.html)
