@@ -1,7 +1,7 @@
 # visualpedia
 We visualize wiikipedia for you!
 
-To the website: [here](https://codedoctorde.github.io/visualpage/) 
+To the website: [here](https://codedoctorde.github.io/visualpedia/) 
 * [Frontend](https://codedoctorde.github.io/visualpedia/frontend/) 
 * [Wiki](https://github.com/codedoctorde/visualpedia/wiki/)
 
