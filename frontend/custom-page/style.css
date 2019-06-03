@@ -7,8 +7,6 @@
 }
 .subtitle{
     font-size: 1.5em;
-    color:rgba(128,128,128,1);
-
 }
 .inline{
     display: inline;
@@ -34,4 +32,37 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 100;
     font-size: 1.1em;
+}
+.horizontal-center{
+    float: none;
+    text-align: center;
+}
+.progress-bar{
+    padding: 0.5em 0em;
+}
+.bg-primary{
+    background-color: rgba(0,255,0,1);
+}
+.bg-secondary{
+    background-color: rgba(128,128,128,1);
+}
+.cl-primary{
+    color: rgba(0,255,0,1);
+}
+.cl-secondary{
+    color: rgba(128,128,128,1);
+}
+.progress{
+    text-align: center;
+}
+.btn {
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+    border-color: black;
+    border-spacing: 1em;
+}
+.btn:hover{
+    background-color: rgba(58,175,220,1);
+    border-radius: 0em;
+    padding: 0.6em 1.1em;
 }

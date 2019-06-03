@@ -3,23 +3,28 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=e, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="style.css" rel="stylesheet">
     <title>VisualPage - CustomPage - Home</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
+            $("#step-2").hide();
             $("#language-select").focus(function () {
                 prev_val = $(this).val();
             }).change(function (event) {
                 event.preventDefault();
                 switch ($(this).val()) {
                     case "english":
-                        alert("English");
+                        step1("en");
+                        $("#home").fadeOut(100);
+                        $("#main").fadeIn(100);
                         break;
                     case "german":
-                        alert("Deutsch");
+                        step1("de");
+                        $("#home").fadeOut(100);
+                        $("#main").fadeIn(100);
                         break;
                     default:
                         alert("Diese Eingabe ist ungültig!");
@@ -28,6 +33,22 @@
                 $(this).val(prev_val);
             });
         });
+        function step1(language) {
+            $.getJSON(window.location.pathname.replace(/[\\\/][^\\\/]*$/, '') + '/language/' + language + ".json", function (data) {
+                $(".lang").each(function (index, element) {
+                    var currentData = data;
+                    $(this).text().split(" ").forEach(function(index){
+                        console.log(index);
+                        currentData = currentData[index];
+                    });
+                    $(this).text(currentData);
+                });
+            });
+            $("#progress-bar").width("25%");
+            $("#progress-bar").text("25%");
+            $("#step-2").fadeIn(400);
+            $("#home").fadeOut(400);
+        }
     </script>
 </head>
 
@@ -39,10 +60,13 @@
         </svg>
         <div class="vertical-middle">
             <h1 class="title">CustomPage</h1>
-            <h2 class="subtitle">Your self-paint editor!</h2>
+            <h2 class="subtitle cl-secondary">Your self-paint editor!</h2>
+        </div>
+        <div class="progress bg-secondary">
+            <div class="progress-bar bg-primary" style="width: 0%" id="progress-bar">0%</div>
         </div>
     </div><br>
-    <center>
+    <div class="horizontal-center" id="home">
         Welcome on the CustomPage site!<br>
         Choose your language!<br><br>
         <form action="#">
@@ -61,7 +85,12 @@
         Click <a href="https://github.com/CodeDoctorDE/visualpage/tree/master/frontend/custom-page/language">here</a> to
         see
         the language folder of the module!<br>
-    </center>
+    </div>
+    <div class="horizontal-center" id="step-2">
+        <p class="lang">step-2 description</p>
+        <button class="lang btn bg-primary">step-2 edit</button>
+        <button class="lang btn bg-primary">step-2 see</button>
+    </div>
 </body>
 
 </html>
