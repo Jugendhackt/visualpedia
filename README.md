@@ -1,8 +1,8 @@
 # visualpedia
 We visualize wiikipedia for you!
 
-To the website: [here](https://codedoctorde.github.io/visualpedia/) 
-* [Frontend](https://codedoctorde.github.io/visualpedia/frontend/) 
+To the website: [here](https://jugendhackt.github.io/visualpedia/) 
+* [Frontend](https://jugendhackt.github.io/visualpedia/frontend/) 
 * [Wiki](https://github.com/codedoctorde/visualpedia/wiki/)
 
 Pictures:
